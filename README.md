@@ -16,7 +16,7 @@ jobs:
 
 | Name                    | Description                                                                          |
 |-------------------------|--------------------------------------------------------------------------------------|
-| [release-tags.yml](https://github.com/fish-shop/workflows/blob/main/.github/workflows/release-tags.yml)      | Create major and major-minor release tags (i.e. `vX` and `vX.Y`) for tags matching the format `vX.Y.Z`.     |
+| [release-tags.yml](.github/workflows/release-tags.yml)      | Create major and major-minor release tags (i.e. `vX` and `vX.Y`) for tags matching the format `vX.Y.Z`.     |
 
 ## License
 
