@@ -8,8 +8,8 @@ Call reusable workflows with the `uses` keyword directly within a job, using the
 
 ```yaml
 jobs:
-  dependency-review:
-    uses: fish-shop/workflows/.github/workflows/dependency-review.yml@v1
+  release-tags:
+    uses: fish-shop/workflows/.github/workflows/release-tags.yml@v1
 ```
 
 ## Available Workflows
