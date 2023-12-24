@@ -11,18 +11,13 @@ jobs:
   release-tags:
     uses: fish-shop/workflows/.github/workflows/release-tags.yml@v1
 ```
-## Available workflows
-
-| Name             | Purpose                                                                            |
-|------------------|------------------------------------------------------------------------------------|
-| `release-tags`   | Create major and major-minor release tags after new semantic version tag is added. |
-| `markdown-links` | Check for broken hyperlinks in Markdown files.                                     |
 
 ## Available Workflows
 
 | Name                    | Description                                                                          |
 |-------------------------|--------------------------------------------------------------------------------------|
-| [release-tags.yml](.github/workflows/release-tags.yml)      | Create major and major-minor release tags (i.e. `vX` and `vX.Y`) for tags matching the format `vX.Y.Z`.     |
+| [release-tags.yml](.github/workflows/release-tags.yml)     | Create major and major-minor release tags (i.e. `vX` and `vX.Y`) for tags matching the format `vX.Y.Z`. |
+| [markdown-links.yml](.github/workflows/markdown-links.yml) | Check for broken hyperlinks in Markdown files.    |
 
 ## Workflow Versions
 
@@ -32,7 +27,7 @@ Use one of the following patterns when specifying the version reference for work
 |----------|-----------|------------------------------------------------------------------------|
 | `vX`     | `v1`      | the latest `v1.*` release including non-breaking changes and bug fixes |
 | `vX.Y`   | `v1.1`    | the latest `v1.1.*` release including bug fixes                        |
-| `vX.Y.Z` | `v1.1.0`  | the `v1.1.0` release only                                              |                
+| `vX.Y.Z` | `v1.1.0`  | the `v1.1.0` release only                                              |
 
 The recommended pattern is `vX` (e.g. `v1`). This will ensure that the version of the workflow used includes the latest non-breaking changes and bug fixes, and guarantees compatibility with previous versions of that major release number.
 
