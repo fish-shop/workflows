@@ -1,0 +1,26 @@
+name: markdown-links
+on:
+  workflow_call:
+    inputs:
+      config-path:
+        required: true
+        type: string
+jobs:
+  markdown-links:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Check links in modified Markdown files
+      if: github.event_name == 'pull_request'
+      uses: gaurav-nelson/github-action-markdown-link-check@v1
+      with:
+        base-branch: ${{ github.base_ref }}
+        check-modified-files-only: yes
+        use-verbose-mode: yes
+        config-file: ${{ inputs.config-path }}
+    - name: Check links in all Markdown files
+      if: github.event_name != 'pull_request'
+      uses: gaurav-nelson/github-action-markdown-link-check@v1
+      with:
+        use-verbose-mode: yes
+        config-file: ${{ inputs.config-path }}
