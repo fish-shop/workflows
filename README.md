@@ -11,6 +11,12 @@ jobs:
   release-tags:
     uses: fish-shop/workflows/.github/workflows/release-tags.yml@v1
 ```
+## Available workflows
+
+| Name             | Purpose                                                                            |
+|------------------|------------------------------------------------------------------------------------|
+| `release-tags`   | Create major and major-minor release tags after new semantic version tag is added. |
+| `markdown-links` | Check for broken hyperlinks in Markdown files.                                     |
 
 ## Available Workflows
 
