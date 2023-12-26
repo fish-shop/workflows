@@ -1,0 +1,17 @@
+name: dependency-review
+on:
+  workflow_call:
+jobs:
+  dependency-review:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: 'Checkout Repository'
+        uses: actions/checkout@v4
+      - name: 'Dependency Review'
+        uses: actions/dependency-review-action@v3
+        with:
+          comment-summary-in-pr: true
+          fail-on-severity: low
+          vulnerability-check: true
