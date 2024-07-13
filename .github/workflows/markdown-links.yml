@@ -3,24 +3,54 @@ on:
   workflow_call:
     inputs:
       config-path:
-        required: true
+        description: 'Path to the Linkspector configuration file'
+        default: ''
+        required: false
         type: string
+
+permissions: read-all
+
 jobs:
   markdown-links:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
-    - name: Check links in modified Markdown files
-      if: github.event_name == 'pull_request'
-      uses: gaurav-nelson/github-action-markdown-link-check@d53a906aa6b22b8979d33bc86170567e619495ec # 1.0.15
-      with:
-        base-branch: ${{ github.base_ref }}
-        check-modified-files-only: yes
-        use-verbose-mode: yes
-        config-file: ${{ inputs.config-path }}
-    - name: Check links in all Markdown files
-      if: github.event_name != 'pull_request'
-      uses: gaurav-nelson/github-action-markdown-link-check@d53a906aa6b22b8979d33bc86170567e619495ec # 1.0.15
-      with:
-        use-verbose-mode: yes
-        config-file: ${{ inputs.config-path }}
+      - name: Checkout repository
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+      - name: Harden runner
+        uses: step-security/harden-runner@17d0e2bd7d51742c71671bd19fa12bdc9d40a3d6 # v2.8.1
+        with:
+          egress-policy: audit
+      - name: Check links in modified Markdown files
+        if: github.event_name == 'pull_request' && inputs.config-path == ''
+        uses: umbrelladocs/action-linkspector@edd00b453149a11ab419183d1e8e46159e609ec0 # v1.1.3
+        with:
+          fail_on_error: true
+          filter_mode: file
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+      - name: Check links in modified Markdown files using specified config file
+        if: github.event_name == 'pull_request' && inputs.config-path != ''
+        uses: umbrelladocs/action-linkspector@edd00b453149a11ab419183d1e8e46159e609ec0 # v1.1.3
+        with:
+          config_file: ${{ inputs.config-path }}
+          fail_on_error: true
+          filter_mode: file
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+      - name: Check links in all Markdown files
+        if: github.event_name != 'pull_request' && inputs.config-path == ''
+        uses: umbrelladocs/action-linkspector@edd00b453149a11ab419183d1e8e46159e609ec0 # v1.1.3
+        with:
+          fail_on_error: true
+          filter_mode: nofilter
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+      - name: Check links in all Markdown files using specified config file
+        if: github.event_name != 'pull_request' && inputs.config-path != ''
+        uses: umbrelladocs/action-linkspector@edd00b453149a11ab419183d1e8e46159e609ec0 # v1.1.3
+        with:
+          config_file: ${{ inputs.config-path }}
+          fail_on_error: true
+          filter_mode: nofilter
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
