@@ -21,7 +21,7 @@ jobs:
         with:
           egress-policy: audit
       - name: Check links in modified Markdown files
-        if: github.event_name == 'pull_request' && inputs.config-path == ''
+        if: inputs.config-path == ''
         uses: umbrelladocs/action-linkspector@edd00b453149a11ab419183d1e8e46159e609ec0 # v1.1.3
         with:
           fail_on_error: true
@@ -29,28 +29,11 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
       - name: Check links in modified Markdown files using specified config file
-        if: github.event_name == 'pull_request' && inputs.config-path != ''
+        if: inputs.config-path != ''
         uses: umbrelladocs/action-linkspector@edd00b453149a11ab419183d1e8e46159e609ec0 # v1.1.3
         with:
           config_file: ${{ inputs.config-path }}
           fail_on_error: true
           filter_mode: file
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-review
-      - name: Check links in all Markdown files
-        if: github.event_name != 'pull_request' && inputs.config-path == ''
-        uses: umbrelladocs/action-linkspector@edd00b453149a11ab419183d1e8e46159e609ec0 # v1.1.3
-        with:
-          fail_on_error: true
-          filter_mode: nofilter
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-review
-      - name: Check links in all Markdown files using specified config file
-        if: github.event_name != 'pull_request' && inputs.config-path != ''
-        uses: umbrelladocs/action-linkspector@edd00b453149a11ab419183d1e8e46159e609ec0 # v1.1.3
-        with:
-          config_file: ${{ inputs.config-path }}
-          fail_on_error: true
-          filter_mode: nofilter
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
