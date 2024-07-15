@@ -1,4 +1,5 @@
 name: release-tags
+on:
   workflow_call:
 jobs:
   release-tags:
