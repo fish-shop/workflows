@@ -1,4 +1,4 @@
-name: release-tags
+name: workflows-release-tags
 on:
   push:
     tags:
@@ -7,7 +7,7 @@ on:
 permissions: read-all
 
 jobs:
-  release-tags:
+  workflows-release-tags:
     permissions:
       contents: write
     runs-on: ubuntu-latest
