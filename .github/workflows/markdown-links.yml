@@ -14,7 +14,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Harden runner
-        uses: step-security/harden-runner@c95a14d0e5bab51a9f56296a4eb0e416910cd350 # v2.10.3
+        uses: step-security/harden-runner@cb605e52c26070c328afc4562f0b4ada7618a84e # v2.10.4
         with:
           egress-policy: audit
       - name: Disable unprivileged user namespaces restrictions
@@ -22,7 +22,7 @@ jobs:
         shell: bash
       - name: Check links in modified Markdown files
         if: inputs.config-path == ''
-        uses: umbrelladocs/action-linkspector@fc382e19892aca958e189954912fe379a8df270c # v1.2.4
+        uses: umbrelladocs/action-linkspector@de84085e0f51452a470558693d7d308fbb2fa261 # v1.2.5
         with:
           fail_on_error: true
           filter_mode: file
@@ -30,7 +30,7 @@ jobs:
           reporter: github-pr-review
       - name: Check links in modified Markdown files using specified config file
         if: inputs.config-path != ''
-        uses: umbrelladocs/action-linkspector@fc382e19892aca958e189954912fe379a8df270c # v1.2.4
+        uses: umbrelladocs/action-linkspector@de84085e0f51452a470558693d7d308fbb2fa261 # v1.2.5
         with:
           config_file: ${{ inputs.config-path }}
           fail_on_error: true
