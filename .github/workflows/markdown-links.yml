@@ -19,7 +19,7 @@ jobs:
           egress-policy: audit
       - name: Check links in modified Markdown files
         if: inputs.config-path == ''
-        uses: umbrelladocs/action-linkspector@3e12ade1e0b1823455dae8cf8b4f9cc92ec7dd20 # v1.3.3
+        uses: umbrelladocs/action-linkspector@a0567ce1c7c13de4a2358587492ed43cab5d0102 # v1.3.4
         with:
           fail_on_error: true
           filter_mode: file
@@ -27,7 +27,7 @@ jobs:
           reporter: github-pr-review
       - name: Check links in modified Markdown files using specified config file
         if: inputs.config-path != ''
-        uses: umbrelladocs/action-linkspector@3e12ade1e0b1823455dae8cf8b4f9cc92ec7dd20 # v1.3.3
+        uses: umbrelladocs/action-linkspector@a0567ce1c7c13de4a2358587492ed43cab5d0102 # v1.3.4
         with:
           config_file: ${{ inputs.config-path }}
           fail_on_error: true
