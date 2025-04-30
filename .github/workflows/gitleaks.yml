@@ -16,3 +16,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITLEAKS_NOTIFY_USER_LIST: "@marcransome"
+          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
