@@ -1,8 +1,9 @@
-name: gitleaks
+name: Gitleaks SAST scan
 on:
   workflow_call:
 jobs:
   scan:
+    name: Gitleaks SAST scan
     runs-on: ubuntu-latest
     steps:
       - name: Harden runner
