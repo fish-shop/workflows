@@ -1,8 +1,9 @@
-name: codeql-analysis
+name: CodeQL Anaalysis
 on:
   workflow_call:
 jobs:
   analyze-actions:
+    name: CodeQL Anaalysis
     runs-on: ubuntu-latest
     steps:
       - name: Harden runner
