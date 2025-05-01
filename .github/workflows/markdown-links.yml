@@ -26,7 +26,7 @@ jobs:
           filter_mode: file
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
-      - name: Check links in modified Markdown files using specified config file
+      - name: Check links in modified Markdown with config file
         if: inputs.config-path != ''
         uses: umbrelladocs/action-linkspector@a0567ce1c7c13de4a2358587492ed43cab5d0102 # v1.3.4
         with:
