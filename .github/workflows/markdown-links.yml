@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
       - name: Check links in modified Markdown files
         if: inputs.config-path == ''
-        uses: umbrelladocs/action-linkspector@874d01cae9fd488e3077b08952093235bd626977 # v1.3.7
+        uses: umbrelladocs/action-linkspector@652f85bc57bb1e7d4327260decc10aa68f7694c3 # v1.4.0
         with:
           fail_on_error: true
           filter_mode: file
@@ -28,7 +28,7 @@ jobs:
           reporter: github-pr-review
       - name: Check links in modified Markdown files with config file
         if: inputs.config-path != ''
-        uses: umbrelladocs/action-linkspector@874d01cae9fd488e3077b08952093235bd626977 # v1.3.7
+        uses: umbrelladocs/action-linkspector@652f85bc57bb1e7d4327260decc10aa68f7694c3 # v1.4.0
         with:
           config_file: ${{ inputs.config-path }}
           fail_on_error: true
