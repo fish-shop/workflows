@@ -16,8 +16,11 @@ jobs:
 
 | Name                    | Description                                                                          |
 |-------------------------|--------------------------------------------------------------------------------------|
+| [codeql-analysis.yml](.github/workflows/codeql-analysis.yml)     | Run [CodeQL](https://codeql.github.com/) semantic code analysis engine to find security vulnerabilities. |
 | [dependency-review.yml](.github/workflows/dependency-review.yml) | Scan pull requests for dependency changes and raise an error if vulnerabilities or invalid licenses are introduced. |
+| [gitleaks.yml](.github/workflows/gitleaks.yml)     | Run [Gitleaks](https://gitleaks.io/) SAST tool for detecting and preventing hardcoded secrets. |
 | [markdown-links.yml](.github/workflows/markdown-links.yml) | Check for broken hyperlinks in Markdown files.    |
+| [openssf-scorecard.yml](.github/workflows/openssf-scorecard.yml)     | Generate an [OpenSSF Scorecard](https://scorecard.dev) Report. |
 | [release-tags.yml](.github/workflows/release-tags.yml)     | Create major and major-minor release tags (i.e. `vX` and `vX.Y`) for tags matching the format `vX.Y.Z`. |
 
 ## Workflow Versions
